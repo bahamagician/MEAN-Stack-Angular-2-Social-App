@@ -8,5 +8,5 @@ Notes for launching:
 - cd into the directory
 - Run `$ npm install`
 - Start Mongo w/  `$ mongod`
-- Run gulp w/ `gulp`
-- Start server w/ `npm start`
+- Run gulp w/ `$ gulp`
+- Start server w/ `$ npm start`
