@@ -154,33 +154,7 @@ export interface DirectiveMetadataFactory {
  * ```
  */
 export interface ComponentMetadataFactory {
-    (obj: {
-        selector?: string;
-        inputs?: string[];
-        outputs?: string[];
-        properties?: string[];
-        events?: string[];
-        host?: {
-            [key: string]: string;
-        };
-        bindings?: any[];
-        providers?: any[];
-        exportAs?: string;
-        moduleId?: string;
-        queries?: {
-            [key: string]: any;
-        };
-        viewBindings?: any[];
-        viewProviders?: any[];
-        changeDetection?: ChangeDetectionStrategy;
-        templateUrl?: string;
-        template?: string;
-        styleUrls?: string[];
-        styles?: string[];
-        directives?: Array<Type | any[]>;
-        pipes?: Array<Type | any[]>;
-        encapsulation?: ViewEncapsulation;
-    }): ComponentDecorator;
+    (): ComponentDecorator;
     new (obj: {
         selector?: string;
         inputs?: string[];

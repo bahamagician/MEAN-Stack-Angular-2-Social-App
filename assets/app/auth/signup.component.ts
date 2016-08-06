@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, ControlGroup, Validators} from "@angular/common";
+import {FormBuilder, ControlGroup, Validators, Control} from "@angular/common";
 @Component({
     selector: 'my-signup',
     template: `
@@ -14,7 +14,7 @@ import {FormBuilder, ControlGroup, Validators} from "@angular/common";
             <input [ngFormControl]="myForm.find('lastName')" type="text" id="lastName" class="form-control">
           </div>
           <div class="form-group">
-            <label for="email">First Name</label>
+            <label for="email">Email</label>
             <input [ngFormControl]="myForm.find('email')" type="email" id="email" class="form-control">
           </div>
           <div class="form-group">
@@ -38,8 +38,18 @@ export class SignupComponent implements OnInit{
         this.myForm = this._fb.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            email: ['', Validators.required],
+            email: ['', Validators.compose([
+                Validators.required,
+                this.isEmail
+            ])],
             password: ['', Validators.required]
         });
     }
+
+    private isEmail(control: Control): {[s: string]: boolean}{
+        if(!control.value.match("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")){
+            return {invalidMail:true};
+        }
+    }
 }
+
