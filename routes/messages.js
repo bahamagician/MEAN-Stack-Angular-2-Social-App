@@ -8,7 +8,7 @@ router.post('/', function(req, res, next){
     content: req.body.content
   });
   message.save(function(err, result){
-    if(err{
+    if(err){
       return res.status(404).json({
         title: 'An error occured',
         error: err
